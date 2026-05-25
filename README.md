@@ -190,9 +190,9 @@ This project follows a modular backend structure where authentication, validatio
 
 ## 👨‍💻 Auther
 
-Developed by Your Name
+Developed by Bavani.Ch
 
-GitHub: https://github.com/your-username
+GitHub: https://github.com/auth-system
 
 ---
 
