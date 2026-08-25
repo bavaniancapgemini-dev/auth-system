@@ -1,8 +1,9 @@
 from database import add_user, get_users
-from validation import username_exists
+from validation import username_exists, valid_password
 from auth import login
 from utils import title
-
+from getpass import getpass
+import validation
 
 while True:
 
@@ -21,33 +22,38 @@ while True:
 
         username = input("Username: ")
 
-        if username_exists(users, username):
+        if validation.username_exists(users, username):
 
             print("Username already exists")
 
         else:
 
-            password = input("Password: ")
+            password = getpass("Password: ")
 
-            add_user(username, password)
+            if valid_password(password):
 
-            print("Registration Successful")
+                add_user(username, password)
 
+                print("Registration Successful")
+
+            else:
+
+                print("Password must be at least 6 characters"
+                      "and contain at least one letter and one number")
 
     elif choice == "2":
 
         username = input("Username: ")
 
-        password = input("Password: ")
+        password = getpass("Password: ")
 
         if login(username, password):
-
+            
             print("Login Successful")
-
+            
         else:
-
-            print("Invalid Credentials")
-
+            
+            print("Invalid username or password")
 
     elif choice == "3":
 
