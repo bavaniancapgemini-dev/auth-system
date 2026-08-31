@@ -37,7 +37,13 @@ while True:
 
             password = getpass("Password: ")
 
-            if valid_password(password):
+            confirm_password = getpass("Confirm Password: ")
+
+            if password != confirm_password:
+
+                print("Passwords do not match")
+
+            elif valid_password(password):
 
                 add_user(username, password)
 
