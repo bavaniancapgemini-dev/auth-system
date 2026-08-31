@@ -33,3 +33,15 @@ def valid_password(password):
         return True
 
     return False
+
+def valid_username(username):
+
+    if len(username) < 3:
+
+        return False
+
+    if not username.replace("_", "").isalnum():
+
+        return False
+
+    return True
