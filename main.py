@@ -57,25 +57,41 @@ while True:
                     "Password must be at least 6 characters "
                     "and contain at least one letter and one number"
                 )
-
+                
     elif choice == "2":
 
         username = input("Username: ")
 
-        password = getpass("Password: ")
+        attempts = 0
 
-        if login(username, password):
+        while attempts < 3:
 
-            current_user = username
+            password = getpass("Password: ")
 
-            print("Login Successful")
+            if login(username, password):
 
-            print(f"Welcome, {current_user}!")
-            
-        else:
-            
-            print("Invalid username or password")
+                current_user = username
 
+                print("Login Successful")
+
+                print(f"Welcome, {current_user}!")
+
+                break
+
+            else:
+
+                attempts += 1
+
+                print("Invalid username or password")
+
+                if attempts < 3:
+
+                    print(f"Attempts remaining: {3 - attempts}")
+
+                else:
+
+                    print("Too many failed login attempts.")
+                
     elif choice == "3":
 
         break
