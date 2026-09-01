@@ -5,6 +5,8 @@ from utils import title
 from getpass import getpass
 import validation
 
+current_user = None
+
 while True:
 
     title()
@@ -63,8 +65,12 @@ while True:
         password = getpass("Password: ")
 
         if login(username, password):
-            
+
+            current_user = username
+
             print("Login Successful")
+
+            print(f"Welcome, {current_user}!")
             
         else:
             
@@ -73,7 +79,6 @@ while True:
     elif choice == "3":
 
         break
-
 
     else:
 
