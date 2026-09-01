@@ -13,7 +13,14 @@ while True:
 
     print("1. Register")
     print("2. Login")
-    print("3. Exit")
+    
+    if current_user:
+        
+        print("3. Logout")
+        
+    else:
+        
+        print("3. Exit")
 
     choice = input("Choose: ")
 
@@ -93,8 +100,16 @@ while True:
                     print("Too many failed login attempts.")
                 
     elif choice == "3":
+        
+        if current_user:
+            
+            current_user = None
+            
+            print("Logged out successfully.")
+            
+        else:
 
-        break
+            break
 
     else:
 
