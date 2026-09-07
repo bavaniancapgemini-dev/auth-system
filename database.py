@@ -61,4 +61,19 @@ def update_password(username, new_password):
     conn.commit()
 
     conn.close()
+    
+def delete_user(username):
+
+    conn = sqlite3.connect("users.db")
+
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "DELETE FROM users WHERE username = ?",
+        (username,)
+    )
+
+    conn.commit()
+
+    conn.close()
 

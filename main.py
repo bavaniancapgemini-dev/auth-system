@@ -1,4 +1,4 @@
-from database import add_user, get_users, update_password
+from database import add_user, get_users, update_password, delete_user
 from validation import username_exists, valid_password, valid_username
 from auth import login
 from utils import title
@@ -19,6 +19,7 @@ while True:
         print("3. Logout")
         print("4. View Profile")
         print("5. Change Password")
+        print("6. Delete Account")
         
     else:
         
@@ -159,6 +160,34 @@ while True:
             else:
 
                 print("Current password is incorrect.")
+                
+    elif choice == "6":
+
+        if current_user:
+
+            current_password = getpass("Enter your current password: ")
+
+            if login(current_user, current_password):
+
+                confirmation = input(
+                    "Are you sure you want to delete your account? (yes/no): "
+                )
+
+                if confirmation.lower() == "yes":
+
+                    delete_user(current_user)
+
+                    current_user = None
+
+                    print("Account deleted successfully.")
+
+                else:
+
+                    print("Account deletion cancelled.")
+
+            else:
+
+                print("Incorrect password. Account was not deleted.")
 
     else:
 
