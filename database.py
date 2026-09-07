@@ -47,3 +47,18 @@ def get_users():
 
     return users
 
+def update_password(username, new_password):
+
+    conn = sqlite3.connect("users.db")
+
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "UPDATE users SET password = ? WHERE username = ?",
+        (new_password, username)
+    )
+
+    conn.commit()
+
+    conn.close()
+

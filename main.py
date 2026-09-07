@@ -1,4 +1,4 @@
-from database import add_user, get_users
+from database import add_user, get_users, update_password
 from validation import username_exists, valid_password, valid_username
 from auth import login
 from utils import title
@@ -18,6 +18,7 @@ while True:
         
         print("3. Logout")
         print("4. View Profile")
+        print("5. Change Password")
         
     else:
         
@@ -123,6 +124,41 @@ while True:
         else:
 
             print("Please login first.")
+            
+    elif choice == "5":
+
+        if current_user:
+
+            users = get_users()
+
+            current_password = getpass("Current Password: ")
+
+            if login(current_user, current_password):
+
+                new_password = getpass("New Password: ")
+
+                confirm_password = getpass("Confirm New Password: ")
+
+                if new_password != confirm_password:
+
+                    print("Passwords do not match.")
+
+                elif valid_password(new_password):
+
+                    update_password(current_user, new_password)
+
+                    print("Password changed successfully.")
+
+                else:
+
+                    print(
+                        "Password must be at least 6 characters "
+                        "and contain at least one letter and one number"
+                    )
+
+            else:
+
+                print("Current password is incorrect.")
 
     else:
 
