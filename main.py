@@ -17,10 +17,11 @@ while True:
     if current_user:
         
         print("3. Logout")
+        print("4. View Profile")
         
     else:
         
-        print("3. Exit")
+        print("3. Exit") 
 
     choice = input("Choose: ")
 
@@ -110,6 +111,18 @@ while True:
         else:
 
             break
+        
+    elif choice == "4":
+
+        if current_user:
+
+            print("\n--- User Profile ---")
+
+            print(f"Username: {current_user}")
+
+        else:
+
+            print("Please login first.")
 
     else:
 
